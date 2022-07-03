@@ -1,4 +1,4 @@
-# Semantic Text Similarity with SBERT
+# Sentence Similarity with SBERT
 Advanced Natural Language Processing - Master program.
 
 VNUHCM - University of Science, Summer 2022.
