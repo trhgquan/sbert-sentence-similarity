@@ -1,28 +1,45 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentence Similarity with SBERT</title>
+{% extends 'html/master.html' %}
 
-</head>
-<body>
-    <h1>Sentence Similarity with SBERT</h1>
+{% block title %}
+Sentence Similarity with SBERT
+{% endblock title %}
+
+{% block content %}
+<div class="center">
+    <h1 class="page-title">Sentence Similarity with SBERT</h1>
     <p>A project in Advanced Natural Language Processing - MTH020</p>
     <a href="https://github.com/trhgquan/sbert-sentence-similarity">Project repository on GitHub</a>
+</div>
 
-    <form action="#">
-        <label for="source_sentence">Source sentence</label>
-        <input type="text" name="source_sentence" id="source_sentence" placeholder="Source sentence">
+<form class="main-form needs-validation" novalidate>
+    <div class="mb-3 has-validation">
+        <label for="target_sentence">Target sentence</label>
+        <input class="form-control" type="text" name="target_sentence" id="target_sentence" aria-describedby="target_sentence_feedback" placeholder="Target sentence" required>
+        <div id="target_sentence_feedback" class="invalid-feedback">
+            Field invalid
+        </div>
+    </div>
 
-        <label for="list_sentences">List of sentences (separated by endline)</label>
-        <textarea name="list_sentences" id="list_sentences" cols="30" rows="10"></textarea>
+    <div class="mb-3 has-validation">
+        <label for="sentences_list">Sentences list, separated by endline</label>
+        <textarea class="form-control" name="sentences_list" id="sentences_list" aria-describedby="sentences_list_feedback" cols="30" rows="10" placeholder="List of sentences (separated by endline)" required></textarea>
+        <div id="sentences_list_feedback" class="invalid-feedback">
+            Field invalid
+        </div>
+    </div>
 
-        <button>Score</button>
-    </form>
+    <div class="mb-3 has-validation">
+        <label for="threshold_max">Threshold: <span id="current_threshold">0.5</span></label>
+        <input type="range" class="form-range" min="0" max="100" id="threshold_max" name="threshold_max">
+        <div id="threshold_max_feedback" class="invalid-feedback">
+            Field invalid
+        </div>
+    </div>
+
+    <button id="submit_scoring" class="btn btn-primary" type="submit">Score</button>
+</form>
+{% endblock content %}
     
-    
-    <!-- Always place javascripts before ending body -->
-    
-</body>
-</html>
+{% block extra_scripts %}
+<script type="text/javascript" src="{{ url_for('index_js') }}"></script>
+{% endblock extra_scripts %}

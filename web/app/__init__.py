@@ -1,7 +1,8 @@
 import os
 from flask import Flask, render_template
+from flask_restful import Api
 
-from .module.sbert import SBERT
+from .module.pipeline import Pipeline
 
 '''Init a Flask app
 '''
@@ -23,8 +24,15 @@ def create_app(test_config = None):
     except OSError:
         pass
 
+    api = Api(app)
+    api.add_resource(Pipeline, '/score', endpoint = 'score')
+
     @app.route('/')
     def index():
         return render_template('html/index.html')
+    
+    @app.route('/index_js')
+    def index_js():
+        return render_template('js/index.js')
 
     return app
