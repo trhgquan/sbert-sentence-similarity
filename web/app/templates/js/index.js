@@ -1,11 +1,15 @@
 $("#submit_scoring_btn").on("click", function() {
-    // Disabling submit button to prevent spamming
-    $("#submit_scoring_btn").attr("disabled", true);
+    // Disabling buttons to prevent spamming
+    $('#btn_zone > button').each((_item, button) => {
+        $(button).attr("disabled", true);
+    });
+
+    // Update submit button spinner & text.
     $("#submit_scoring_btn_spinner").removeClass("visually-hidden");
     $("#submit_scoring_btn_text").text("Calculating similarity scores..");
 
     // Clear output zone
-    $("#result_display").html("");
+    $("#result_display").html("Will be here when all processings are done.");
 
     // Remove all errors
     $("form").find(".is-invalid").each(function() {
@@ -32,29 +36,33 @@ $("#submit_scoring_btn").on("click", function() {
     })
 
     // If the request is success
-    request.done(function(response, textStatus, jqXHR) {
-        result_display = generateTemplate(response.response_dict);
-        
+    request.done((response, _textStatus, _jqXHR) => {
+        result_display = generate_template(response.response_dict);
+
         $("#result_display").html(result_display);
     });
 
     // When the request failed (aka nothing to predict)
     // this will set an error class to that field.
-    request.fail(function(jqXHR, textStatus, errorThrown) {
+    request.fail((jqXHR, _textStatus, _errorThrown) => {
         let error_field = JSON.parse(jqXHR.responseText).error_field;
 
         $("#" + error_field).addClass("is-invalid");
     });
 
-    // Enable submit button after finished.
-    request.always(function() {
-        $("#submit_scoring_btn").attr("disabled", false);
+    request.always(() => {
+        // Enable submit button after finished.
+        $('#btn_zone > button').each((_item, button) => {
+            $(button).attr("disabled", false);
+        });
+
+        // Hide submit spinner & update its text.
         $("#submit_scoring_btn_spinner").addClass("visually-hidden");
         $("#submit_scoring_btn_text").text("Calculate similarity scores");
     });
 });
 
-$("#threshold_max").on("change", function() {
+$("#threshold_max").on("input", function() {
     // Empty current threshold field
     $("#current_threshold").text();
 
@@ -68,7 +76,7 @@ $("#threshold_max").on("change", function() {
  * @param {dict} response_dict 
  * @returns strings
  */
-function generateTemplate(response_dict) {
+function generate_template(response_dict) {
     result_display = '';
 
     result_display += "<div class='accordion' id='accordion_template'>";
@@ -79,7 +87,9 @@ function generateTemplate(response_dict) {
         result_display += "<button class='accordion-button collapsed'" +
             " type='button' data-bs-toggle='collapse' data-bs-target='#accordion_collapse_" + id + "'" +
             " aria-expanded='false' aria-controls='accordion_heading_" + id + "'>";
+        result_display += "<b>";
         result_display += dict.sentence;
+        result_display += "</b>";
         result_display += "</button>"
         result_display += "</h2>";
     
@@ -90,15 +100,16 @@ function generateTemplate(response_dict) {
         result_display += "<p>";
         result_display += "Similarity score: ";
         result_display += dict.score;
-        result_display += " ";
-    
+        result_display += "</p>";
+
+        result_display += "<p>";
+        result_display += "Verdict: ";
         result_display += (dict.similar) ? "<span class='badge bg-success'>" : "<span class='badge bg-danger'>";
         result_display += (dict.similar) ? "Similar" : "Not similar";
         result_display += "</span>";
-    
         result_display += "</p>";
+
         result_display += "</div>";
-    
         result_display += "</div>";
         result_display += "</div>";
     });
