@@ -9,11 +9,7 @@ class Pipeline(Resource):
     
     @staticmethod
     def preprocess(input_str : str) -> list:
-        splitted_input = input_str.split('\n')
-
-        if len(splitted_input) == 1:
-            return [].append(input_str)
-        
+        splitted_input = input_str.rstrip('\n').split('\n')
         return splitted_input
 
     def post(self):
