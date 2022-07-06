@@ -1,5 +1,5 @@
 # Installation
-Create virtual environment so that you don't have to install any additional packages in your real workspace:
+Create a virtual environment so that you don't have to install any additional packages in your real workspace
 ```
 python -m venv venv
 ```
@@ -15,7 +15,7 @@ Activate virtual environment
     venv/bin/activate
     ```
 
-You can deactivate it by replacing `activate` with `deactivate` (i.e `venv/bin/deactivate` on Linux).
+You can deactivate it by replacing `activate` with `deactivate` (i.e. `venv/bin/deactivate` on Linux).
 
 Finally, install required packages in `requirements.txt`:
 ```
