@@ -15,11 +15,11 @@ Activate virtual environment
     venv/bin/activate
     ```
 
-You can deactivate it by replacing `activate` with `deactivate` (i.e. `venv/bin/deactivate` on Linux).
+You can deactivate it by using `deactivate`.
 
 Finally, install required packages in `requirements.txt`:
 ```
-pip install -r requirments.txt
+pip install -r requirements.txt
 ```
 
-Now everything should fine. To run the demo server on Windows, run `run.bat`. On Linux, run `run.sh`.
+Now everything should be fine. To run the demo server on Windows, run `run.bat`. On Linux, run `run.sh`.
