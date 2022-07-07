@@ -36,6 +36,7 @@ jobs:
   
   jslint:
     name: ES6 linter
+    needs: pylint
     runs-on: ubuntu-latest
 
     steps:
