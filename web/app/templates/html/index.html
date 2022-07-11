@@ -5,52 +5,53 @@ Sentence Similarity with SBERT
 {% endblock title %}
 
 {% block content %}
-<div class="text-center">
-    <h1 class="page-title">Sentence Similarity with SBERT</h1>
-    <p>A project in Advanced Natural Language Processing - MTH020</p>
-    <a href="https://github.com/trhgquan/sbert-sentence-similarity">Project repository on GitHub</a>
-</div>
-
-<div class="main-form row">
-    <div class="col-md-4">
-        <h5 class="page-title">Input</h5>
-        <form class="needs-validation" novalidate>
-            <div class="mb-3 has-validation">
-                <label for="target_sentence">Target sentence</label>
-                <input class="form-control" type="text" name="target_sentence" id="target_sentence" aria-describedby="target_sentence_feedback" placeholder="Target sentence" required>
-                <div id="target_sentence_feedback" class="invalid-feedback">
-                    Field invalid
-                </div>
-            </div>
-        
-            <div class="mb-3 has-validation">
-                <label for="sentences_list">Sentences list, separated by endline</label>
-                <textarea class="form-control" name="sentences_list" id="sentences_list" aria-describedby="sentences_list_feedback" cols="30" rows="10" placeholder="List of sentences (separated by endline)" required></textarea>
-                <div id="sentences_list_feedback" class="invalid-feedback">
-                    Field invalid
-                </div>
-            </div>
-        
-            <div class="mb-3 has-validation">
-                <label for="threshold_max">Threshold: <span id="current_threshold">0.5</span></label>
-                <input type="range" class="form-range" min="0" max="100" id="threshold_max" name="threshold_max">
-                <div id="threshold_max_feedback" class="invalid-feedback">
-                    Field invalid
-                </div>
-            </div>
-        
-            <div class="form-group" id="btn_zone">
-                <button id="submit_scoring_btn" class="btn btn-primary" type="button">
-                    <span id="submit_scoring_btn_spinner" class="spinner-border spinner-border-sm visually-hidden" role="status" aria-hidden="true"></span>
-                    <span id="submit_scoring_btn_text">Calculate similarity scores</span>
-                </button>
-                <button class="btn btn-secondary" type="reset">Reset all fields</button>
-            </div>
-        </form>
+<div class="content">
+    <div class="text-center">
+        <h1 class="page-title">Sentence Similarity with SBERT</h1>
+        <p>A project in Advanced Natural Language Processing - MTH020</p>
     </div>
-    <div class="col-md-8">
-        <h5 class="page-title">Output</h5>
-        <div id="result_display">Will be here when all processings are done.</div>
+
+    <div class="main-form row">
+        <div class="col-md-4">
+            <h5 class="page-title">Input</h5>
+            <form class="needs-validation" novalidate>
+                <div class="mb-3 has-validation">
+                    <label for="target_sentence">Target sentence</label>
+                    <input class="form-control" type="text" name="target_sentence" id="target_sentence" aria-describedby="target_sentence_feedback" placeholder="Target sentence" required>
+                    <div id="target_sentence_feedback" class="invalid-feedback">
+                        Field invalid
+                    </div>
+                </div>
+            
+                <div class="mb-3 has-validation">
+                    <label for="sentences_list">Sentences list, separated by endline</label>
+                    <textarea class="form-control" name="sentences_list" id="sentences_list" aria-describedby="sentences_list_feedback" cols="30" rows="10" placeholder="List of sentences (separated by endline)" required></textarea>
+                    <div id="sentences_list_feedback" class="invalid-feedback">
+                        Field invalid
+                    </div>
+                </div>
+            
+                <div class="mb-3 has-validation">
+                    <label for="threshold_max">Threshold: <span id="current_threshold">0.5</span></label>
+                    <input type="range" class="form-range" min="0" max="100" id="threshold_max" name="threshold_max">
+                    <div id="threshold_max_feedback" class="invalid-feedback">
+                        Field invalid
+                    </div>
+                </div>
+            
+                <div class="form-group" id="btn_zone">
+                    <button id="submit_scoring_btn" class="btn btn-primary" type="button">
+                        <span id="submit_scoring_btn_spinner" class="spinner-border spinner-border-sm visually-hidden" role="status" aria-hidden="true"></span>
+                        <span id="submit_scoring_btn_text">Calculate similarity scores</span>
+                    </button>
+                    <button class="btn btn-secondary" type="reset">Reset all fields</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8">
+            <h5 class="page-title">Output</h5>
+            <div id="result_display">Will be here when all processings are done.</div>
+        </div>
     </div>
 </div>
 {% endblock content %}

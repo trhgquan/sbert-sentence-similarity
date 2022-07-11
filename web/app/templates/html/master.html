@@ -13,6 +13,8 @@
             {% block content %}{% endblock content %}
         </div>
     </div>
+
+    {% include 'html/footer.html' %}
     
     <!-- Always place javascripts before ending body -->
     <script type="text/javascript" src="{{ url_for('static', filename = 'js/jquery.min.js') }}"></script>
