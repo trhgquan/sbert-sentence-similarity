@@ -6,7 +6,7 @@ import torch
 import torch.nn.functional as F
 
 class SBERT:
-    '''SBERT, but impemented as an OOP class.
+    '''SBERT, but implemented as an OOP class.
     '''
 
     def __init__(self, model_name):

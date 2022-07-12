@@ -19,7 +19,10 @@ class Pipeline(Resource):
     def preprocess(input_str : str) -> list:
         '''Splitting a string to list of strings with endline as determiner.
         '''
-        splitted_input = input_str.rstrip('\n').split('\n')
+
+        # input_str.splitlines returns a list with '\n' converted as blank string,
+        # using filter to remove them.
+        splitted_input = list(filter(lambda x : len(x) > 0, input_str.splitlines()))
         return splitted_input
 
     def post(self):
@@ -36,8 +39,13 @@ class Pipeline(Resource):
                 'error_field' : str(error_field)
             }, 400
 
+        # Convert target sentence to vector
         target_embedding = self.__sbert_instance.sentence_embedding(target_sentence)
+
+        # Convert sentences list to vector
         sentences_list_embedding = self.__sbert_instance.list_embedding(sentences_list)
+
+        # Get predictions from vector list.
         predictions = self.__sbert_instance.sentence_list_similarity(
             target_embedding, sentences_list_embedding
         )
