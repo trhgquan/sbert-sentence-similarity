@@ -9,8 +9,8 @@ on:
       - main
 
 jobs:
-  pylint:
-    name: Python Linter
+  pylint-and-pytest:
+    name: Testing and Linting python scripts
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -34,10 +34,15 @@ jobs:
       - name: Analysing the code with pylint
         run: |
           pylint $(git ls-files "*.py") --generated-members torch
+
+      - name: Testing the code with pytest
+        run: |
+          cd web
+          python -m pytest tests -v
   
   jslint:
     name: ES6 linter
-    needs: pylint
+    needs: pylint-and-pytest
     runs-on: ubuntu-latest
 
     steps:
