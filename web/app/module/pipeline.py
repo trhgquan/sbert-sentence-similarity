@@ -23,7 +23,11 @@ class Pipeline(Resource):
         # input_str.splitlines returns a list with '\n' converted as blank string,
         # using filter to remove them.
         splitted_input = list(filter(lambda x : len(x) > 0, input_str.splitlines()))
-        return splitted_input
+
+        if len(splitted_input) > 0:
+            return splitted_input
+
+        raise AssertionError('sentences_list')
 
     def post(self):
         '''Handling POST method.
