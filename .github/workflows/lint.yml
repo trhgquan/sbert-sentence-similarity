@@ -38,7 +38,7 @@ jobs:
       - name: Testing the code with pytest
         run: |
           cd web
-          python -m pytest tests -v
+          python -m pytest tests -q --disable-warnings
   
   jslint:
     name: ES6 linter
