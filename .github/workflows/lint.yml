@@ -33,7 +33,7 @@ jobs:
 
       - name: Analysing the code with pylint
         run: |
-          pylint $(git ls-files "*.py") --generated-members torch --disable=redefined-outer-name
+          pylint $(git ls-files "*.py") --generated-members torch
 
       - name: Testing the code with pytest
         run: |

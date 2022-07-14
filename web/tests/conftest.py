@@ -5,8 +5,8 @@ import pytest
 
 from app import create_app
 
-@pytest.fixture
-def app_test():
+@pytest.fixture(name = 'app_test')
+def fixture_app_test():
     '''Create and configure an app_test instance
     '''
     app_test = create_app()
