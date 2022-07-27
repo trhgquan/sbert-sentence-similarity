@@ -3,7 +3,7 @@ Advanced Natural Language Processing - MTH020.
 
 VNUHCM - University of Science, Summer 2022.
 
-[![Lint](https://github.com/trhgquan/sbert-sentence-similarity/actions/workflows/lint.yml/badge.svg)](https://github.com/trhgquan/sbert-sentence-similarity/actions/workflows/lint.yml)
+[![Lint and Test](https://github.com/trhgquan/sbert-sentence-similarity/actions/workflows/lint.yml/badge.svg)](https://github.com/trhgquan/sbert-sentence-similarity/actions/workflows/lint.yml)
 
 ## Introduction
 ### Abstract
